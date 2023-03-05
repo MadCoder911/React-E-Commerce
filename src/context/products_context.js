@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
 import reducer from "../reducers/products_reducer";
-import { products_url as url } from "../utils/constants";
+
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -23,7 +23,7 @@ const initialState = {
   single_product_error: false,
   single_product: {},
 };
-
+const url = process.env.REACT_APP_PRODUCTS_URL;
 const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({ children }) => {
