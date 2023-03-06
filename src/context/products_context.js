@@ -23,7 +23,7 @@ const initialState = {
   single_product_error: false,
   single_product: {},
 };
-const url = process.env.REACT_APP_PRODUCTS_URL;
+const url = "https://course-api.com/react-store-products";
 const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({ children }) => {
