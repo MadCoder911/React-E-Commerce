@@ -9,7 +9,6 @@ import {
   Cart,
   Error,
   Checkout,
-  Private,
 } from "./pages";
 import PrivateRoute from "./pages/PrivateRoute";
 function App() {

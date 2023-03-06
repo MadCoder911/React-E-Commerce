@@ -8,7 +8,6 @@ import {
 } from "../actions";
 
 const cart_reducer = (state, action) => {
-  console.log(state);
   if (action.type === ADD_TO_CART) {
     const { id, mainColor, amount, product } = action.payload;
     const tempItem = state.cart.find((i) => i.id === id + mainColor);
@@ -63,9 +62,8 @@ const cart_reducer = (state, action) => {
           }
           return { ...item, amount: newAmount };
         }
-      } else {
-        return item;
       }
+      return item;
     });
 
     return { ...state, cart: tempCart };
