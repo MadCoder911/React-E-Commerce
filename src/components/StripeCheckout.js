@@ -41,7 +41,16 @@ const CheckoutForm = () => {
     },
   };
   const createPaymentIntent = async () => {
-    console.log("hello from stripe checkout");
+    try {
+      const { data } = await axios.post(
+        ".netlify/functions/create-payment-intent",
+        JSON.stringify({ cart, shipping_fee, total_amount })
+      );
+      console.log(data);
+      setClientSecret(data);
+    } catch (error) {
+      console.error(error.response);
+    }
   };
   useEffect(() => {
     createPaymentIntent();
@@ -57,6 +66,25 @@ const CheckoutForm = () => {
           options={cardStyle}
           onChange={handleChange}
         />
+        <button disabled={processing || disabled || succeeded} id="submit">
+          <span className="button-text">
+            {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
+          </span>
+        </button>
+        {/* show any error when processing payment */}
+        {error && (
+          <div className="card-error" role="alert">
+            {error}
+          </div>
+        )}
+        {/* show success msg */}
+
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment Succeeded, see the result in your{" "}
+          <a href={`https://dashboard.stripe.com/test/payments`}>
+            Stripe dashboard
+          </a>
+        </p>
       </form>
     </div>
   );
@@ -121,7 +149,9 @@ const Wrapper = styled.section`
     opacity: 0.5;
     cursor: default;
   }
-
+  .hidden {
+    display: none;
+  }
   /* spinner/processing state, errors */
   .spinner,
   .spinner:before,
