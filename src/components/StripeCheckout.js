@@ -46,8 +46,8 @@ const CheckoutForm = () => {
         ".netlify/functions/create-payment-intent",
         JSON.stringify({ cart, shipping_fee, total_amount })
       );
-      console.log(data);
-      setClientSecret(data);
+
+      setClientSecret(data.clientSecret);
     } catch (error) {
       console.error(error.response);
     }
@@ -56,10 +56,47 @@ const CheckoutForm = () => {
     createPaymentIntent();
   }, []);
 
-  const handleChange = async (event) => {};
-  const handleSubmit = async (ev) => {};
+  const handleChange = async (event) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
+    if ((payload, error)) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      clearCart();
+      setTimeout(() => {
+        history("/");
+      }, 5000);
+    }
+  };
+
   return (
     <div>
+      {succeeded ? (
+        <article>
+          <h4>Thank you</h4>
+          <h4>Your payment was successfull</h4>
+          <h4>Redirecting to home page</h4>
+        </article>
+      ) : (
+        <article>
+          <h4>Hello, {myUser && myUser.name}</h4>
+          <p>Your total is {formatPrice(shipping_fee + total_amount)}</p>
+          <p>Test card number: 4242 4242 4242 4242</p>
+        </article>
+      )}
       <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement
           id="card-element"
@@ -79,12 +116,12 @@ const CheckoutForm = () => {
         )}
         {/* show success msg */}
 
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
+        {/* <p className={succeeded ? "result-message" : "result-message hidden"}>
           Payment Succeeded, see the result in your{" "}
           <a href={`https://dashboard.stripe.com/test/payments`}>
             Stripe dashboard
           </a>
-        </p>
+        </p> */}
       </form>
     </div>
   );

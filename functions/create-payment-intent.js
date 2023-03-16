@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
-console.log(stripe.paymentIntent);
+
 exports.handler = async function (event, context) {
   if (event.body) {
     const { cart, shipping_fee, total_amount } = JSON.parse(event.body);
@@ -11,7 +11,7 @@ exports.handler = async function (event, context) {
     };
 
     try {
-      const paymentIntent = await stripe.paymentIntent.create({
+      const paymentIntent = await stripe.paymentIntents.create({
         amount: calculateOrderAmount(),
         currency: "usd",
       });
