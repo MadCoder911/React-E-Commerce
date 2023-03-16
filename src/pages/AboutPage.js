@@ -14,12 +14,15 @@ const AboutPage = () => {
             <h2>our story</h2>
             <div className="underline"></div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-              labore magnam perspiciatis, voluptate quo aspernatur! Repellendus
-              odio ea placeat consectetur aut maiores ipsa recusandae incidunt
-              nisi, natus nesciunt quae libero nam iste iure impedit dicta
-              officiis maxime suscipit? Totam earum odit impedit fugiat
-              consequuntur magni odio ipsa dolor accusamus repellendus!
+              Box Furniture was founded in 1985 with a vision to provide
+              high-quality furniture to customers. Over the years, the store has
+              grown and expanded its product range, but its commitment to
+              quality has remained unchanged. Today, Box Furniture is a trusted
+              name in the industry, known for its stylish and durable furniture
+              pieces. With a focus on customer satisfaction and innovation, the
+              store continues to evolve and adapt to changing trends and
+              demands. Whether you're looking for classic or contemporary
+              designs, Box Furniture has something for everyone.
             </p>
           </div>
         </article>

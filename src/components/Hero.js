@@ -13,9 +13,9 @@ const Hero = () => {
           comfort zone
         </h1>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio
-          inventore dolor reiciendis pariatur natus commodi ab placeat
-          voluptatum atque id?
+          Whether you're looking for a new sofa, dining table, or bedroom set,
+          we have everything you need to transform your home into the space of
+          your dreams.
         </p>
         <Link to="/products" className="btn hero-btn">
           shop now

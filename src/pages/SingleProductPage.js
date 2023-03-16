@@ -46,7 +46,6 @@ const SingleProductPage = () => {
   const {
     name,
     price,
-    description,
     stock,
     stars,
     reviews,
@@ -54,6 +53,8 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
+  let description =
+    "This piece of furniture is the epitome of comfort and relaxation. With its plush cushions and soft fabric, it's perfect for curling up with a good book or watching your favorite movie. The sturdy frame provides ample support, while the wide armrests offer a convenient spot to rest your arms. Whether you're looking for a cozy addition to your living room or a comfortable seat for your home office, this armchair is sure to please.";
   return (
     <Wrapper>
       <PageHero title={name} product />
@@ -67,7 +68,7 @@ const SingleProductPage = () => {
             <h2>{name}</h2>
             <Stars stars={stars} reviews={reviews} />
             <h5 className="price">{formatPrice(price)}</h5>
-            <p className="desc">${description}</p>
+            <p className="desc">{description}</p>
             <p className="info">
               <span>Availbable : </span>
               {stock > 0 ? "In Stock" : "Out of stock"}

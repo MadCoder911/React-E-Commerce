@@ -5,11 +5,13 @@ const Contact = () => {
   return (
     <Wrapper>
       <div className="section-center">
-        <h3>join our newsletter and get 15% off</h3>
+        <h3>Join our newsletter and get 15% off</h3>
         <div className="content">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quae
-            nulla fugiat quasi earum fuga mollitia dicta recusandae animi quam!
+            Stay up-to-date with the latest furniture trends and exclusive deals
+            by joining our newsletter community. be the first to know about new
+            arrivals, promotions, and events. Sign up now and elevate your home
+            decor game!
           </p>
           <form
             className="contact-form"

@@ -11,9 +11,9 @@ const Services = () => {
             custom furniture <br /> built only for you
           </h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repellendus amet alias nobis sapiente hic ad adipisci error quo
-            nostrum odio!
+            At our furniture store, we specialize in creating custom pieces that
+            are tailored to your unique style and needs, let us help you create
+            the perfect piece of furniture for your home today!
           </p>
         </article>
         <div className="services-center">
